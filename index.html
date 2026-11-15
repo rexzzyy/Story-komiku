@@ -23,4 +23,27 @@
 <section class="section" id="creator"><div class="secthead"><h2>✨ Berkarya di Story Komiku</h2></div><div class="quick"><article><div style="font-size:28px">✍️</div><h3>Creator Studio</h3><p>Kelola karya, episode, dan perkembangan pembaca dalam satu tempat.</p><a class="btn ghost" href="#daftar">Pelajari</a></article><article><div style="font-size:28px">🤖</div><h3>AI Assistant</h3><p>Bantu mencari ide, menyusun alur, dan mengembangkan karakter cerita.</p><a class="btn ghost" href="#daftar">Pelajari</a></article><article id="komunitas"><div style="font-size:28px">🗣️</div><h3>Komunitas</h3><p>Tempat pembaca dan kreator berbagi pendapat serta saran.</p><a class="btn ghost" href="#daftar">Pelajari</a></article></div><div class="notice">*Mode offline dan AI Assistant ditampilkan sebagai konsep. Fitur tersebut belum aktif pada demo ini. Semua judul komik di halaman ini adalah contoh fiktif.</div></section>
 <section class="section" id="daftar"><div class="heroBox" style="text-align:center"><h2>Mulai perjalanan ceritamu</h2><p style="margin:0 auto 18px">Baca karya original atau siapkan cerita pertamamu.</p><a class="btn" href="mailto:halo@storykomiku.example?subject=Story%20Komiku">Hubungi Tim</a></div></section>
 </main><footer class="footer"><div class="wrap footerrow"><span>© 2026 Story Komiku · Konsep website</span><span><a href="#komunitas">Komunitas</a>　·　<a href="#creator">Creator Studio</a>　·　Kritik & Saran</span></div></footer>
+<div id="detail" style="display:none;padding:30px 6%;background:#101b35">
+<button onclick="tutupDetail()" class="btn">← Kembali</button>
+<h2 id="judulDetail" style="margin-top:20px"></h2>
+<p id="deskripsiDetail" style="margin-top:15px;line-height:1.7"></p>
+<button class="btn">Mulai Membaca</button>
+</div>
+
+<script>
+document.querySelectorAll('.card').forEach(card=>{
+card.style.cursor='pointer';
+card.onclick=()=>{
+document.getElementById('detail').style.display='block';
+document.getElementById('judulDetail').innerText=card.querySelector('h3').innerText;
+document.getElementById('deskripsiDetail').innerText=
+'Selamat datang di '+card.querySelector('h3').innerText+'. Temukan petualangan seru dalam cerita ini!';
+document.getElementById('detail').scrollIntoView();
+};
+});
+
+function tutupDetail(){
+document.getElementById('detail').style.display='none';
+}
+</script>
 </body></html>
