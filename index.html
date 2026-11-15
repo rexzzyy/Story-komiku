@@ -7,31 +7,36 @@
 <title>Story Komiku</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#070d1c;color:white;font-family:Arial,sans-serif}
-header{background:#101d38;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
-.logo{font-size:23px;font-weight:bold;color:#36c5ff}
-nav a{color:white;text-decoration:none;margin:7px;font-size:14px}
-.hero{margin:22px auto;width:92%;min-height:320px;border-radius:18px;background:linear-gradient(90deg,#071226 5%,rgba(7,18,38,.3)),url('https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1400') center/cover;display:flex;align-items:center;padding:30px}
-.hero h1{font-size:38px;margin-bottom:12px}
-.hero p{max-width:400px;line-height:1.6;color:#d9eaff}
-.btn{background:#168bff;color:white;padding:12px 20px;border:0;border-radius:8px;text-decoration:none;display:inline-block;margin-top:15px;cursor:pointer}
-section{padding:22px 5%}
-h2{color:#43c5ff;margin-bottom:18px}
-.search{width:100%;padding:14px;background:#111e38;border:1px solid #29466d;color:white;border-radius:10px;margin-bottom:18px}
-.categories{display:flex;gap:10px;overflow-x:auto;padding-bottom:15px}
-.categories button{background:#152847;color:#b9ddff;border:1px solid #28456d;padding:11px 17px;border-radius:20px;white-space:nowrap;cursor:pointer}
-.categories button.active,.categories button:hover{background:#168bff;color:white}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:16px}
-.card{background:#111e38;border-radius:12px;overflow:hidden;border:1px solid #243b5e;cursor:pointer;transition:.2s}
-.card:hover{transform:translateY(-5px);border-color:#36baff}
-.card img{width:100%;height:220px;object-fit:cover;display:block}
-.card h3{font-size:15px;padding:10px 10px 5px}
-.card p{font-size:12px;color:#9eb9db;padding:0 10px 12px}
-#detail{display:none;padding:30px 5%;background:#101b35;min-height:60vh}
-#detail img{width:180px;height:250px;object-fit:cover;border-radius:12px;float:left;margin:0 20px 15px 0}
-#detail p{line-height:1.7;color:#d4e5ff}
-.clear{clear:both}
-footer{text-align:center;padding:30px;background:#101b35;color:#8ca5c8;margin-top:30px}
+body{background:#080f20;color:white;font-family:Arial}
+header{background:#101d38;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:23px;font-weight:bold;color:#38baff}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:14px}
+button{cursor:pointer;border:0;border-radius:8px;padding:11px 16px;background:#168bff;color:white}
+button:disabled{opacity:.5}
+section{padding:25px 5%}
+h2{color:#42baff;margin-bottom:18px}
+input,textarea,select{width:100%;padding:13px;margin:7px 0 15px;background:#142441;color:white;border:1px solid #304a70;border-radius:8px}
+.hero{margin:20px auto;width:92%;min-height:270px;border-radius:17px;background:linear-gradient(90deg,#071226,transparent),url('https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1400') center/cover;display:flex;align-items:center;padding:30px}
+.hero h1{font-size:35px;margin-bottom:12px}
+.hero p{line-height:1.6;max-width:390px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:15px}
+.card{background:#142441;border:1px solid #294368;border-radius:12px;overflow:hidden;cursor:pointer}
+.card img{width:100%;height:205px;object-fit:cover}
+.card h3,.card p{padding:8px}
+.card p{color:#a9c3e6;font-size:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tags button{background:#192e50;border:1px solid #34547e}
+.tags button.active{background:#168bff}
+.panel{background:#101d38;padding:20px;border-radius:13px;margin-bottom:20px}
+.hidden{display:none!important}
+.preview{width:100%;max-height:250px;object-fit:contain;margin:10px 0}
+#reader{text-align:center;padding:15px}
+#pageImage{width:100%;max-width:650px;height:65vh;object-fit:contain;background:#050a14}
+.reader-controls{display:flex;justify-content:center;gap:12px;margin:15px}
+#readerInfo{margin:15px;color:#9dcaff}
+footer{text-align:center;padding:30px;background:#101d38;color:#9bb4d7}
+.small{font-size:12px;color:#9bb4d7;line-height:1.6}
 </style>
 </head>
 <body>
@@ -39,112 +44,414 @@ footer{text-align:center;padding:30px;background:#101b35;color:#8ca5c8;margin-to
 <header>
 <div class="logo">✦ STORY KOMIKU</div>
 <nav>
-<a href="#" onclick="beranda()">Beranda</a>
-<a href="#komik">Komik</a>
-<a href="#creator">Creator Studio</a>
-<a href="#komunitas">Komunitas</a>
+<a href="#" onclick="home()">Beranda</a>
+<a href="#catalog">Komik</a>
+<a href="#" onclick="studio()">Creator Studio</a>
+<a href="#community">Komunitas</a>
 </nav>
 </header>
 
-<div id="home">
+<div id="homePage">
 <div class="hero">
 <div>
 <h1>Dunia Cerita Tanpa Batas</h1>
-<p>Temukan petualangan baru, baca cerita menarik, dan ciptakan duniamu sendiri bersama Story Komiku!</p>
-<a href="#komik" class="btn">Jelajahi Komik →</a>
+<p>Baca komik, temukan petualangan baru, dan terbitkan ceritamu sendiri!</p>
+<button onclick="document.getElementById('catalog').scrollIntoView()">Jelajahi Komik</button>
 </div>
 </div>
 
-<section id="komik">
-<h2>✦ Jelajahi Dunia Komik</h2>
-<input class="search" id="search" placeholder="Cari judul komik..." oninput="filterKomik()">
-
-<div class="categories">
-<button class="active" onclick="kategori('Semua',this)">Semua</button>
-<button onclick="kategori('Manga',this)">Manga</button>
-<button onclick="kategori('Manhwa',this)">Manhwa</button>
-<button onclick="kategori('Manhua',this)">Manhua</button>
-<button onclick="kategori('Action',this)">Action</button>
-<button onclick="kategori('Fantasy',this)">Fantasy</button>
-<button onclick="kategori('Romance',this)">Romance</button>
+<section id="catalog">
+<h2>✦ Jelajahi Komik</h2>
+<input id="search" placeholder="Cari judul komik..." oninput="renderComics()">
+<div class="tags" id="filters">
+<button class="active" onclick="setFilter('Semua',this)">Semua</button>
+<button onclick="setFilter('Manga',this)">#Manga</button>
+<button onclick="setFilter('Manhwa',this)">#Manhwa</button>
+<button onclick="setFilter('Manhua',this)">#Manhua</button>
+<button onclick="setFilter('Action',this)">#Action</button>
+<button onclick="setFilter('Fantasy',this)">#Fantasy</button>
+<button onclick="setFilter('Romance',this)">#Romance</button>
 </div>
-
-<div class="grid" id="daftar">
-<div class="card" data-cat="Manga Fantasy Action" onclick="buka(this)">
-<img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500">
-<h3>Petualangan Baru</h3><p>Manga • Fantasy</p>
-</div>
-<div class="card" data-cat="Manhwa Action" onclick="buka(this)">
-<img src="https://images.unsplash.com/photo-1614583225154-5fcdda07019e?w=500">
-<h3>Dunia Imajinasi</h3><p>Manhwa • Action</p>
-</div>
-<div class="card" data-cat="Manga Action" onclick="buka(this)">
-<img src="https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?w=500">
-<h3>Legenda Sang Hero</h3><p>Manga • Action</p>
-</div>
-<div class="card" data-cat="Manhua Fantasy" onclick="buka(this)">
-<img src="https://images.unsplash.com/photo-1613376023733-0a73315d9b06?w=500">
-<h3>Rahasia Dunia</h3><p>Manhua • Fantasy</p>
-</div>
-</div>
+<div class="grid" id="comicGrid"></div>
+<p id="emptyCatalog" class="small hidden">Belum ada komik yang diterbitkan.</p>
 </section>
 
-<section id="creator">
-<h2>✦ Creator Studio</h2>
-<p>Punya cerita sendiri? Bersiaplah menjadi creator Story Komiku!</p>
-<a class="btn" href="#creator">Segera Hadir</a>
-</section>
-
-<section id="komunitas">
+<section id="community">
 <h2>✦ Komunitas Komiku</h2>
-<p>Tempat berkumpulnya pembaca dan pencipta cerita.</p>
+<p>Tempat berkumpulnya pembaca dan creator Story Komiku.</p>
 </section>
 </div>
 
-<div id="detail">
-<button class="btn" onclick="beranda()">← Kembali</button>
-<div style="height:25px"></div>
-<img id="fotoDetail" src="">
-<h2 id="judulDetail"></h2>
-<p id="sinopsis">Selamat datang di dunia cerita ini. Ikuti petualangan seru yang menanti!</p>
-<button class="btn" onclick="alert('Fitur membaca segera hadir!')">Mulai Membaca</button>
-<div class="clear"></div>
+<section id="registerPage" class="hidden">
+<div class="panel">
+<h2>✦ Pendaftaran Creator</h2>
+<label>Nama samaran</label>
+<input id="nickname" placeholder="Nama creator">
+<label>Asal negara</label>
+<input id="country" placeholder="Contoh: Indonesia">
+<p class="small">Ini akun demo yang disimpan di browser ini. Jangan masukkan nomor telepon atau email pribadi ke demo publik.</p>
+<button onclick="register()">Daftar Creator</button>
+<button onclick="home()">Kembali</button>
 </div>
+</section>
+
+<section id="studioPage" class="hidden">
+<h2>✦ Creator Studio</h2>
+<div class="panel">
+<p id="creatorWelcome"></p>
+<button onclick="showUpload()">+ Upload Komik Baru</button>
+</div>
+<div id="uploadPanel" class="panel hidden">
+<h2>Upload Komik</h2>
+<label>Judul komik</label>
+<input id="comicTitle" placeholder="Judul komik">
+
+<label>Cover komik</label>
+<input id="coverFile" type="file" accept="image/*">
+<img id="coverPreview" class="preview hidden">
+
+<label>Sinopsis</label>
+<textarea id="synopsis" rows="4" placeholder="Ceritakan sinopsis komik..."></textarea>
+
+<label>Kategori utama (wajib)</label>
+<select id="mainCategory">
+<option value="">Pilih kategori</option>
+<option>Manga</option>
+<option>Manhwa</option>
+<option>Manhua</option>
+</select>
+
+<label>Genre tambahan</label>
+<div class="tags" id="genreTags">
+<button type="button" onclick="toggleGenre(this,'Action')">#Action</button>
+<button type="button" onclick="toggleGenre(this,'Fantasy')">#Fantasy</button>
+<button type="button" onclick="toggleGenre(this,'Romance')">#Romance</button>
+<button type="button" onclick="toggleGenre(this,'Comedy')">#Comedy</button>
+<button type="button" onclick="toggleGenre(this,'Horror')">#Horror</button>
+<button type="button" onclick="toggleGenre(this,'Adventure')">#Adventure</button>
+</div>
+
+<button onclick="saveComic()">Simpan Komik</button>
+<button onclick="hideUpload()">Batal</button>
+</div>
+
+<div class="panel">
+<h2>Komik Saya</h2>
+<div id="myComics"></div>
+</div>
+</section>
+
+<section id="reader" class="hidden">
+<button onclick="backToComic()">← Kembali</button>
+<h2 id="readerTitle" style="margin-top:20px"></h2>
+<p id="readerEpisode" class="small"></p>
+<div id="readerInfo"></div>
+<img id="pageImage" alt="Halaman komik">
+<div class="reader-controls">
+<button onclick="previousPage()">← Sebelumnya</button>
+<button onclick="nextPage()">Berikutnya →</button>
+</div>
+<p class="small">Geser gambar ke kiri atau kanan untuk berpindah halaman.</p>
+</section>
+
+<section id="comicDetail" class="hidden">
+<button onclick="home()">← Beranda</button>
+<div class="panel" style="margin-top:20px">
+<img id="detailCover" class="preview" style="max-height:300px">
+<h2 id="detailTitle"></h2>
+<p id="detailTags" class="small"></p>
+<p id="detailSynopsis"></p>
+<div id="episodeList" style="margin-top:20px"></div>
+</div>
+</section>
 
 <footer>© 2026 Story Komiku — Read, Create, Imagine.</footer>
 
 <script>
-let pilihan='Semua';
+const DB_NAME='StoryKomikuDB';
+let db;
+let currentFilter='Semua';
+let selectedGenres=[];
+let currentComic=null;
+let currentEpisode=null;
+let currentPage=0;
+let touchStart=0;
 
-function kategori(k,tombol){
-pilihan=k;
-document.querySelectorAll('.categories button').forEach(b=>b.classList.remove('active'));
-tombol.classList.add('active');
-filterKomik();
-}
+const $=id=>document.getElementById(id);
 
-function filterKomik(){
-let q=document.getElementById('search').value.toLowerCase();
-document.querySelectorAll('.card').forEach(c=>{
-let cocokKategori=pilihan==='Semua'||c.dataset.cat.includes(pilihan);
-let cocokCari=c.innerText.toLowerCase().includes(q);
-c.style.display=cocokKategori&&cocokCari?'block':'none';
+function openDB(){
+return new Promise((resolve,reject)=>{
+let request=indexedDB.open(DB_NAME,1);
+request.onupgradeneeded=()=>{
+let database=request.result;
+database.createObjectStore('comics',{keyPath:'id'});
+};
+request.onsuccess=()=>{db=request.result;resolve()};
+request.onerror=()=>reject(request.error);
 });
 }
 
-function buka(card){
-document.getElementById('home').style.display='none';
-document.getElementById('detail').style.display='block';
-document.getElementById('fotoDetail').src=card.querySelector('img').src;
-document.getElementById('judulDetail').innerText=card.querySelector('h3').innerText;
+function store(mode,action,data){
+return new Promise((resolve,reject)=>{
+let tx=db.transaction('comics',mode);
+let request=action==='getAll'?tx.objectStore('comics').getAll():
+action==='get'?tx.objectStore('comics').get(data):
+action==='delete'?tx.objectStore('comics').delete(data):
+tx.objectStore('comics').put(data);
+request.onsuccess=()=>resolve(request.result);
+request.onerror=()=>reject(request.error);
+});
+}
+
+function showOnly(id){
+['homePage','registerPage','studioPage','reader','comicDetail'].forEach(x=>$(x).classList.add('hidden'));
+$(id).classList.remove('hidden');
 window.scrollTo(0,0);
 }
 
-function beranda(){
-document.getElementById('detail').style.display='none';
-document.getElementById('home').style.display='block';
-window.scrollTo(0,0);
+function home(){
+showOnly('homePage');
+renderComics();
 }
+
+function studio(){
+if(!localStorage.getItem('creator')){
+showOnly('registerPage');
+}else{
+showOnly('studioPage');
+$('creatorWelcome').innerText='Selamat datang, '+localStorage.getItem('creator')+'!';
+renderMyComics();
+}
+}
+
+function register(){
+let name=$('nickname').value.trim();
+let country=$('country').value.trim();
+if(!name||!country){alert('Isi nama samaran dan negara dulu!');return}
+localStorage.setItem('creator',name);
+localStorage.setItem('creatorCountry',country);
+studio();
+}
+
+function showUpload(){
+$('uploadPanel').classList.remove('hidden');
+}
+
+function hideUpload(){
+$('uploadPanel').classList.add('hidden');
+}
+
+$('coverFile').addEventListener('change',()=>{
+let file=$('coverFile').files[0];
+if(file){
+$('coverPreview').src=URL.createObjectURL(file);
+$('coverPreview').classList.remove('hidden');
+}
+});
+
+function toggleGenre(button,genre){
+if(selectedGenres.includes(genre)){
+selectedGenres=selectedGenres.filter(x=>x!==genre);
+button.classList.remove('active');
+}else{
+selectedGenres.push(genre);
+button.classList.add('active');
+}
+}
+
+async function saveComic(){
+let title=$('comicTitle').value.trim();
+let synopsis=$('synopsis').value.trim();
+let category=$('mainCategory').value;
+let cover=$('coverFile').files[0];
+
+if(!title||!category||!cover){
+alert('Judul, cover dan kategori utama wajib diisi!');
+return;
+}
+if(!cover.type.startsWith('image/')){
+alert('Cover harus berupa gambar!');
+return;
+}
+
+try{
+let comic={
+id:Date.now(),
+title,synopsis,category,
+genres:[...selectedGenres],
+creator:localStorage.getItem('creator'),
+cover,
+episodes:[]
+};
+await store('readwrite','put',comic);
+alert('Komik berhasil disimpan di browser ini!');
+$('comicTitle').value='';
+$('synopsis').value='';
+$('mainCategory').value='';
+$('coverFile').value='';
+$('coverPreview').classList.add('hidden');
+selectedGenres=[];
+document.querySelectorAll('#genreTags button').forEach(b=>b.classList.remove('active'));
+hideUpload();
+renderMyComics();
+renderComics();
+}catch(e){
+alert('Penyimpanan gagal. Coba gambar yang lebih kecil atau hapus data lama.');
+}
+}
+
+async function renderComics(){
+let comics=await store('readonly','getAll');
+let q=$('search').value.toLowerCase();
+let filtered=comics.filter(c=>{
+let tags=[c.category,...c.genres];
+return (currentFilter==='Semua'||tags.includes(currentFilter))&&
+(c.title.toLowerCase().includes(q)||tags.join(' ').toLowerCase().includes(q));
+});
+$('comicGrid').innerHTML='';
+$('emptyCatalog').classList.toggle('hidden',filtered.length>0);
+filtered.forEach(c=>{
+let card=document.createElement('div');
+card.className='card';
+let img=document.createElement('img');
+img.src=URL.createObjectURL(c.cover);
+let h=document.createElement('h3');
+h.textContent=c.title;
+let p=document.createElement('p');
+p.textContent='#'+c.category+' '+c.genres.map(x=>'#'+x).join(' ');
+card.append(img,h,p);
+card.onclick=()=>showDetail(c.id);
+$('comicGrid').append(card);
+});
+}
+
+function setFilter(filter,button){
+currentFilter=filter;
+document.querySelectorAll('#filters button').forEach(b=>b.classList.remove('active'));
+button.classList.add('active');
+renderComics();
+}
+
+async function renderMyComics(){
+let comics=await store('readonly','getAll');
+let mine=comics.filter(c=>c.creator===localStorage.getItem('creator'));
+$('myComics').innerHTML='';
+if(!mine.length){$('myComics').textContent='Belum ada komik yang kamu upload.';return}
+mine.forEach(c=>{
+let div=document.createElement('div');
+div.className='panel';
+let title=document.createElement('b');
+title.textContent=c.title;
+let count=document.createElement('p');
+count.className='small';
+count.textContent=c.episodes.length+' episode';
+let upload=document.createElement('button');
+upload.textContent='+ Upload Episode';
+upload.onclick=()=>uploadEpisode(c.id);
+let view=document.createElement('button');
+view.textContent='Lihat';
+view.style.marginLeft='8px';
+view.onclick=()=>showDetail(c.id);
+div.append(title,count,upload,view);
+$('myComics').append(div);
+});
+}
+
+async function uploadEpisode(id){
+let comic=await store('readonly','get',id);
+let name=prompt('Masukkan judul episode:');
+if(name===null||!name.trim())return;
+let files=document.createElement('input');
+files.type='file';
+files.accept='image/*';
+files.multiple=true;
+files.onchange=async()=>{
+let pages=Array.from(files.files);
+if(!pages.length)return;
+if(pages.some(f=>!f.type.startsWith('image/'))){alert('Semua halaman harus berupa gambar.');return}
+comic.episodes.push({
+id:Date.now(),
+name:name.trim(),
+pages
+});
+try{
+await store('readwrite','put',comic);
+alert('Episode berhasil disimpan!');
+renderMyComics();
+}catch(e){
+alert('Gagal menyimpan. Coba kurangi ukuran atau jumlah gambar.');
+}
+};
+files.click();
+}
+
+async function showDetail(id){
+currentComic=await store('readonly','get',id);
+showOnly('comicDetail');
+$('detailCover').src=URL.createObjectURL(currentComic.cover);
+$('detailTitle').textContent=currentComic.title;
+$('detailTags').textContent='#'+currentComic.category+' '+currentComic.genres.map(x=>'#'+x).join(' ');
+$('detailSynopsis').textContent=currentComic.synopsis||'Belum ada sinopsis.';
+$('episodeList').innerHTML='<h2>Daftar Episode</h2>';
+if(!currentComic.episodes.length){
+$('episodeList').innerHTML+='<p class="small">Belum ada episode.</p>';
+}
+currentComic.episodes.forEach((ep,i)=>{
+let b=document.createElement('button');
+b.textContent='Episode '+(i+1)+': '+ep.name;
+b.style.margin='5px';
+b.onclick=()=>openEpisode(currentComic.id,ep.id);
+$('episodeList').append(b);
+});
+}
+
+async function openEpisode(comicId,episodeId){
+currentComic=await store('readonly','get',comicId);
+currentEpisode=currentComic.episodes.find(e=>e.id===episodeId);
+currentPage=0;
+showOnly('reader');
+$('readerTitle').textContent=currentComic.title;
+$('readerEpisode').textContent=currentEpisode.name;
+displayPage();
+}
+
+function displayPage(){
+let page=currentEpisode.pages[currentPage];
+$('pageImage').src=URL.createObjectURL(page);
+$('readerInfo').textContent='Halaman '+(currentPage+1)+' dari '+currentEpisode.pages.length;
+}
+
+function nextPage(){
+if(currentPage<currentEpisode.pages.length-1){
+currentPage++;displayPage();
+}else{
+alert('Ini halaman terakhir episode.');
+}
+}
+
+function previousPage(){
+if(currentPage>0){currentPage--;displayPage()}
+}
+
+$('pageImage').addEventListener('touchstart',e=>{
+touchStart=e.changedTouches[0].screenX;
+},{passive:true});
+
+$('pageImage').addEventListener('touchend',e=>{
+let difference=e.changedTouches[0].screenX-touchStart;
+if(difference<-45)nextPage();
+if(difference>45)previousPage();
+},{passive:true});
+
+function backToComic(){
+showDetail(currentComic.id);
+}
+
+openDB().then(()=>{
+renderComics();
+}).catch(()=>{
+alert('Browser tidak mendukung penyimpanan komik.');
+});
 </script>
 </body>
   </html>
