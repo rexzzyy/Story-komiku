@@ -1,49 +1,151 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08132d">
-<title>Story Komiku — Baca, Buat, Berbagi Cerita</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Story Komiku</title>
 <style>
-:root{--bg:#071127;--panel:#101e3d;--panel2:#14264b;--blue:#2878ff;--cyan:#42c7ff;--text:#f4f7ff;--muted:#a9b8d8;--line:#263b68}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#173b83 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}a{color:inherit;text-decoration:none}.wrap{max-width:1180px;margin:auto;padding:0 22px}.nav{position:sticky;top:0;z-index:5;background:#071127eF;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.navin{height:68px;display:flex;align-items:center;gap:25px}.brand{font-size:21px;font-weight:850;letter-spacing:-.7px;display:flex;align-items:center;gap:9px}.book{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#338cff,#684bff);font-size:21px}.links{display:flex;gap:22px;color:#c7d4f1;font-size:14px}.search{margin-left:auto;background:#122347;border:1px solid var(--line);border-radius:30px;padding:10px 15px;color:var(--muted);min-width:210px}.btn{border:0;border-radius:13px;padding:11px 17px;background:linear-gradient(100deg,#1676ff,#4268ff);color:white;font-weight:750;cursor:pointer;display:inline-block}.btn.ghost{background:#15264a;border:1px solid var(--line)}.hero{padding:54px 0 28px;display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:center}.heroBox{padding:35px;border:1px solid #31528e;border-radius:25px;background:linear-gradient(120deg,#112c61,#0c1834 70%);overflow:hidden;position:relative}.eyebrow{color:#69d5ff;font-weight:750;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.05;letter-spacing:-2px;margin:12px 0}.hero p{color:#c4d2ef;max-width:500px}.art{height:280px;border-radius:22px;background:radial-gradient(circle at 60% 35%,#83d9ff 0 3%,transparent 4%),radial-gradient(ellipse at 65% 60%,#347fff 0 15%,transparent 42%),linear-gradient(145deg,#253d92,#10172e 55%,#442b88);display:grid;place-items:center;font-size:100px;box-shadow:inset 0 0 50px #7db8ff33}.features{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0 0 35px}.feature{background:#101f40;border:1px solid var(--line);border-radius:15px;padding:15px;text-align:center;color:#dce7ff;font-size:13px}.feature b{display:block;font-size:22px;margin-bottom:4px}.section{margin:32px 0}.secthead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.secthead h2{margin:0;font-size:23px}.muted{color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.comic{background:#101e3d;border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.2s}.comic:hover{transform:translateY(-4px);border-color:#438cff}.cover{height:175px;display:grid;place-items:center;font-size:57px;background:linear-gradient(145deg,#2056a5,#171b48 65%,#713e9a)}.cover.two{background:linear-gradient(145deg,#216d7c,#14254b 60%,#7a3d70)}.cover.three{background:linear-gradient(145deg,#62439c,#17264d 65%,#2676a4)}.cover.four{background:linear-gradient(145deg,#9b5b2f,#3d2348 60%,#192d60)}.cover.five{background:linear-gradient(145deg,#236a54,#1b2852 60%,#593c9d)}.comicbody{padding:12px}.comicbody strong{display:block}.tag{font-size:11px;color:#75cfff}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.quick article{background:linear-gradient(135deg,#142a55,#101a35);border:1px solid var(--line);border-radius:18px;padding:20px}.quick h3{margin:7px 0}.quick p{color:var(--muted);font-size:13px}.footer{margin-top:45px;padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.footerrow{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.notice{background:#0d1b38;border:1px solid var(--line);border-radius:15px;padding:14px;color:#bdcbea;font-size:13px;margin-top:22px}
-@media(max-width:800px){.links{display:none}.search{min-width:0;width:42%;font-size:12px}.hero{grid-template-columns:1fr;padding-top:25px}.heroBox{padding:25px}.art{height:190px}.features{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}.cover{height:155px}.quick{grid-template-columns:1fr}.navin{gap:10px}.brand{font-size:18px}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#070d1c;color:white;font-family:Arial,sans-serif}
+header{background:#101d38;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.logo{font-size:23px;font-weight:bold;color:#36c5ff}
+nav a{color:white;text-decoration:none;margin:7px;font-size:14px}
+.hero{margin:22px auto;width:92%;min-height:320px;border-radius:18px;background:linear-gradient(90deg,#071226 5%,rgba(7,18,38,.3)),url('https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1400') center/cover;display:flex;align-items:center;padding:30px}
+.hero h1{font-size:38px;margin-bottom:12px}
+.hero p{max-width:400px;line-height:1.6;color:#d9eaff}
+.btn{background:#168bff;color:white;padding:12px 20px;border:0;border-radius:8px;text-decoration:none;display:inline-block;margin-top:15px;cursor:pointer}
+section{padding:22px 5%}
+h2{color:#43c5ff;margin-bottom:18px}
+.search{width:100%;padding:14px;background:#111e38;border:1px solid #29466d;color:white;border-radius:10px;margin-bottom:18px}
+.categories{display:flex;gap:10px;overflow-x:auto;padding-bottom:15px}
+.categories button{background:#152847;color:#b9ddff;border:1px solid #28456d;padding:11px 17px;border-radius:20px;white-space:nowrap;cursor:pointer}
+.categories button.active,.categories button:hover{background:#168bff;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:16px}
+.card{background:#111e38;border-radius:12px;overflow:hidden;border:1px solid #243b5e;cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-5px);border-color:#36baff}
+.card img{width:100%;height:220px;object-fit:cover;display:block}
+.card h3{font-size:15px;padding:10px 10px 5px}
+.card p{font-size:12px;color:#9eb9db;padding:0 10px 12px}
+#detail{display:none;padding:30px 5%;background:#101b35;min-height:60vh}
+#detail img{width:180px;height:250px;object-fit:cover;border-radius:12px;float:left;margin:0 20px 15px 0}
+#detail p{line-height:1.7;color:#d4e5ff}
+.clear{clear:both}
+footer{text-align:center;padding:30px;background:#101b35;color:#8ca5c8;margin-top:30px}
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><span class="book">▣</span>Story Komiku</a><nav class="links"><a href="#home">Beranda</a><a href="#komik">Komik</a><a href="#creator">Creator Studio</a><a href="#komunitas">Komunitas</a></nav><div class="search">⌕ Cari komik atau kreator</div><a class="btn" href="#creator">Mulai</a></div></header>
-<main class="wrap" id="home">
-<section class="hero"><div class="heroBox"><div class="eyebrow">DUNIA CERITA ADA DI SINI</div><h1>Baca. Buat.<br><span style="color:#65cfff">Berbagi Cerita.</span></h1><p>Temukan komik original, ikuti kreator favorit, dan bangun ceritamu sendiri bersama Story Komiku.</p><a class="btn" href="#komik">Jelajahi Komik →</a> <a class="btn ghost" href="#creator">Jadi Kreator</a></div><div class="art" aria-label="Ilustrasi buku komik">📖✨</div></section>
-<section class="features"><div class="feature"><b>📚</b>Komik Gratis</div><div class="feature"><b>📴</b>Mode Online & Offline*</div><div class="feature"><b>🎨</b>Creator Studio</div><div class="feature"><b>🤖</b>AI Assistant*</div><div class="feature"><b>💬</b>Kritik & Saran</div></section>
-<section class="section" id="komik"><div class="secthead"><h2>🔥 Komik Pilihan</h2><span class="muted">Karya contoh</span></div><div class="cards">
-<article class="comic"><div class="cover">🌌</div><div class="comicbody"><strong>Penjaga Bintang</strong><span class="tag">Fantasi · Petualangan</span></div></article>
-<article class="comic"><div class="cover two">🏙️</div><div class="comicbody"><strong>Kota Setelah Hujan</strong><span class="tag">Drama · Slice of Life</span></div></article>
-<article class="comic"><div class="cover three">🗡️</div><div class="comicbody"><strong>Legenda Arunika</strong><span class="tag">Aksi · Fantasi</span></div></article>
-<article class="comic"><div class="cover four">🦊</div><div class="comicbody"><strong>Rubah Senja</strong><span class="tag">Misteri · Fantasi</span></div></article>
-<article class="comic"><div class="cover five">🚀</div><div class="comicbody"><strong>Orbit Terakhir</strong><span class="tag">Fiksi Ilmiah</span></div></article>
-</div></section>
-<section class="section" id="creator"><div class="secthead"><h2>✨ Berkarya di Story Komiku</h2></div><div class="quick"><article><div style="font-size:28px">✍️</div><h3>Creator Studio</h3><p>Kelola karya, episode, dan perkembangan pembaca dalam satu tempat.</p><a class="btn ghost" href="#daftar">Pelajari</a></article><article><div style="font-size:28px">🤖</div><h3>AI Assistant</h3><p>Bantu mencari ide, menyusun alur, dan mengembangkan karakter cerita.</p><a class="btn ghost" href="#daftar">Pelajari</a></article><article id="komunitas"><div style="font-size:28px">🗣️</div><h3>Komunitas</h3><p>Tempat pembaca dan kreator berbagi pendapat serta saran.</p><a class="btn ghost" href="#daftar">Pelajari</a></article></div><div class="notice">*Mode offline dan AI Assistant ditampilkan sebagai konsep. Fitur tersebut belum aktif pada demo ini. Semua judul komik di halaman ini adalah contoh fiktif.</div></section>
-<section class="section" id="daftar"><div class="heroBox" style="text-align:center"><h2>Mulai perjalanan ceritamu</h2><p style="margin:0 auto 18px">Baca karya original atau siapkan cerita pertamamu.</p><a class="btn" href="mailto:halo@storykomiku.example?subject=Story%20Komiku">Hubungi Tim</a></div></section>
-</main><footer class="footer"><div class="wrap footerrow"><span>© 2026 Story Komiku · Konsep website</span><span><a href="#komunitas">Komunitas</a>　·　<a href="#creator">Creator Studio</a>　·　Kritik & Saran</span></div></footer>
-<div id="detail" style="display:none;padding:30px 6%;background:#101b35">
-<button onclick="tutupDetail()" class="btn">← Kembali</button>
-<h2 id="judulDetail" style="margin-top:20px"></h2>
-<p id="deskripsiDetail" style="margin-top:15px;line-height:1.7"></p>
-<button class="btn">Mulai Membaca</button>
+
+<header>
+<div class="logo">✦ STORY KOMIKU</div>
+<nav>
+<a href="#" onclick="beranda()">Beranda</a>
+<a href="#komik">Komik</a>
+<a href="#creator">Creator Studio</a>
+<a href="#komunitas">Komunitas</a>
+</nav>
+</header>
+
+<div id="home">
+<div class="hero">
+<div>
+<h1>Dunia Cerita Tanpa Batas</h1>
+<p>Temukan petualangan baru, baca cerita menarik, dan ciptakan duniamu sendiri bersama Story Komiku!</p>
+<a href="#komik" class="btn">Jelajahi Komik →</a>
+</div>
 </div>
 
-<script>
-document.querySelectorAll('.card').forEach(card=>{
-card.style.cursor='pointer';
-card.onclick=()=>{
-document.getElementById('detail').style.display='block';
-document.getElementById('judulDetail').innerText=card.querySelector('h3').innerText;
-document.getElementById('deskripsiDetail').innerText=
-'Selamat datang di '+card.querySelector('h3').innerText+'. Temukan petualangan seru dalam cerita ini!';
-document.getElementById('detail').scrollIntoView();
-};
-});
+<section id="komik">
+<h2>✦ Jelajahi Dunia Komik</h2>
+<input class="search" id="search" placeholder="Cari judul komik..." oninput="filterKomik()">
 
-function tutupDetail(){
+<div class="categories">
+<button class="active" onclick="kategori('Semua',this)">Semua</button>
+<button onclick="kategori('Manga',this)">Manga</button>
+<button onclick="kategori('Manhwa',this)">Manhwa</button>
+<button onclick="kategori('Manhua',this)">Manhua</button>
+<button onclick="kategori('Action',this)">Action</button>
+<button onclick="kategori('Fantasy',this)">Fantasy</button>
+<button onclick="kategori('Romance',this)">Romance</button>
+</div>
+
+<div class="grid" id="daftar">
+<div class="card" data-cat="Manga Fantasy Action" onclick="buka(this)">
+<img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500">
+<h3>Petualangan Baru</h3><p>Manga • Fantasy</p>
+</div>
+<div class="card" data-cat="Manhwa Action" onclick="buka(this)">
+<img src="https://images.unsplash.com/photo-1614583225154-5fcdda07019e?w=500">
+<h3>Dunia Imajinasi</h3><p>Manhwa • Action</p>
+</div>
+<div class="card" data-cat="Manga Action" onclick="buka(this)">
+<img src="https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?w=500">
+<h3>Legenda Sang Hero</h3><p>Manga • Action</p>
+</div>
+<div class="card" data-cat="Manhua Fantasy" onclick="buka(this)">
+<img src="https://images.unsplash.com/photo-1613376023733-0a73315d9b06?w=500">
+<h3>Rahasia Dunia</h3><p>Manhua • Fantasy</p>
+</div>
+</div>
+</section>
+
+<section id="creator">
+<h2>✦ Creator Studio</h2>
+<p>Punya cerita sendiri? Bersiaplah menjadi creator Story Komiku!</p>
+<a class="btn" href="#creator">Segera Hadir</a>
+</section>
+
+<section id="komunitas">
+<h2>✦ Komunitas Komiku</h2>
+<p>Tempat berkumpulnya pembaca dan pencipta cerita.</p>
+</section>
+</div>
+
+<div id="detail">
+<button class="btn" onclick="beranda()">← Kembali</button>
+<div style="height:25px"></div>
+<img id="fotoDetail" src="">
+<h2 id="judulDetail"></h2>
+<p id="sinopsis">Selamat datang di dunia cerita ini. Ikuti petualangan seru yang menanti!</p>
+<button class="btn" onclick="alert('Fitur membaca segera hadir!')">Mulai Membaca</button>
+<div class="clear"></div>
+</div>
+
+<footer>© 2026 Story Komiku — Read, Create, Imagine.</footer>
+
+<script>
+let pilihan='Semua';
+
+function kategori(k,tombol){
+pilihan=k;
+document.querySelectorAll('.categories button').forEach(b=>b.classList.remove('active'));
+tombol.classList.add('active');
+filterKomik();
+}
+
+function filterKomik(){
+let q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.card').forEach(c=>{
+let cocokKategori=pilihan==='Semua'||c.dataset.cat.includes(pilihan);
+let cocokCari=c.innerText.toLowerCase().includes(q);
+c.style.display=cocokKategori&&cocokCari?'block':'none';
+});
+}
+
+function buka(card){
+document.getElementById('home').style.display='none';
+document.getElementById('detail').style.display='block';
+document.getElementById('fotoDetail').src=card.querySelector('img').src;
+document.getElementById('judulDetail').innerText=card.querySelector('h3').innerText;
+window.scrollTo(0,0);
+}
+
+function beranda(){
 document.getElementById('detail').style.display='none';
+document.getElementById('home').style.display='block';
+window.scrollTo(0,0);
 }
 </script>
-</body></html>
+</body>
+  </html>
+  
